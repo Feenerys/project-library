@@ -11,6 +11,10 @@ function Book(title, author, pages, read) {
   this.pages = pages;
 }
 
+Book.prototype.changeReadStatus = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary(title, author, pages, status) {
   const book = new Book(title, author, pages, status);
   myLibrary.push(book);
@@ -41,7 +45,6 @@ function renderBook(book) {
     const element = document.querySelector(`[data-id="${item.dataset.id}"]`);
     element.remove();
     removeFromLibrary(book.id);
-    console.log(myLibrary);
   });
 
   const readButton = document.createElement("button");
@@ -49,12 +52,12 @@ function renderBook(book) {
 
   readButton.addEventListener("click", () => {
     if (book.read == true) {
-      book.read = false;
       readButton.textContent = "read";
     } else {
-      book.read = true;
       readButton.textContent = "unread";
     }
+    book.changeReadStatus();
+    console.log(myLibrary);
   });
 
   item.appendChild(readButton);
