@@ -1,13 +1,15 @@
-h1 {
+.container {
   display: grid;
   justify-items: center;
+
 }
 
 .book-list {
   list-style-type: none;
   display: grid;
   gap: 12px;
-  padding: 44px;
+  padding: 34px;
+  margin: 0;
 }
 
 .book-list li {
