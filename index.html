@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <h1>My Library</h1>
     <ul class="book-list"></ul>
     <button class="new-button">New Book</button>
     <dialog>
       <form>
+        <h3>Add New Book</h3>
         <label for="title">Title:</label>
         <input id="title" type="text">
         <label for="author">Author:</label>
         <input type="text" id="author">
         <button type="submit" class="add-button">Add</button>
+        <button autofocus class="close-dialog">Close</button>
       </form>
-      <button autofocus class="close-dialog">Close</button>
     </dialog>
     <script src="script.js"></script>
   </body>

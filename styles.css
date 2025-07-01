@@ -1,0 +1,25 @@
+h1 {
+  display: grid;
+  justify-items: center;
+}
+
+.book-list {
+  list-style-type: none;
+  display: grid;
+  gap: 12px;
+  padding: 44px;
+}
+
+.book-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 13px;
+}
+
+
+
+form {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
