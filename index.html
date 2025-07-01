@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <link rel="stylesheet" href="styles.css" />
-    
-</head>
-<body>
-    <ul class="book-list">
-
-    </ul>
+  </head>
+  <body>
+    <ul class="book-list"></ul>
+    <button class="new-button">New Book</button>
+    <dialog>
+      <form>
+        <label for="title">Title:</label>
+        <input id="title" type="text">
+        <label for="author">Author:</label>
+        <input type="text" id="author">
+        <button type="submit" class="add-button">Add</button>
+      </form>
+      <button autofocus class="close-dialog">Close</button>
+    </dialog>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -10,17 +10,16 @@ function Book(title, author, read) {
   this.read = read;
 }
 
-
 function addBookToLibrary(title, author) {
   const book = new Book(title, author);
   myLibrary.push(book);
 }
 
-addBookToLibrary('The Silent Forest', 'Elena Woods');
-addBookToLibrary('Quantum Dreams', 'Max Planckman');
-addBookToLibrary('Midnight Skies', 'Luna Nightshade');
-addBookToLibrary('Code & Chaos', 'Ada Sterling');
-addBookToLibrary('Echoes of Tomorrow', 'J.D. Veritas');
+addBookToLibrary("The Silent Forest", "Elena Woods");
+addBookToLibrary("Quantum Dreams", "Max Planckman");
+addBookToLibrary("Midnight Skies", "Luna Nightshade");
+addBookToLibrary("Code & Chaos", "Ada Sterling");
+addBookToLibrary("Echoes of Tomorrow", "J.D. Veritas");
 
 const list = document.querySelector(".book-list");
 
@@ -32,4 +31,27 @@ function showBooks() {
   }
 }
 
-showBooks()
+showBooks();
+
+const dialog = document.querySelector("dialog");
+const newButton = document.querySelector(".new-button");
+const closeButton = document.querySelector(".close-dialog");
+
+newButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+const addButton = document.querySelector(".add-button");
+const titleInput = document.querySelector("#title");
+const authorInput = document.querySelector("#author");
+
+addButton.addEventListener("click", (event) => {
+  console.log(titleInput.value);
+  addBookToLibrary(titleInput.value, authorInput.value);
+  showBooks()
+  event.preventDefault();
+});
