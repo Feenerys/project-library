@@ -10,22 +10,22 @@ function Book(title, author, read) {
   this.read = read;
 }
 
-function addBookToLibrary(title, author) {
-  const book = new Book(title, author);
+function addBookToLibrary(title, author, status) {
+  const book = new Book(title, author, status);
   myLibrary.push(book);
 }
 
-addBookToLibrary("The Silent Forest", "Elena Woods");
-addBookToLibrary("Quantum Dreams", "Max Planckman");
-addBookToLibrary("Midnight Skies", "Luna Nightshade");
-addBookToLibrary("Code & Chaos", "Ada Sterling");
-addBookToLibrary("Echoes of Tomorrow", "J.D. Veritas");
+addBookToLibrary("The Silent Forest", "Elena Woods", true);
+addBookToLibrary("Quantum Dreams", "Max Planckman", true);
+addBookToLibrary("Midnight Skies", "Luna Nightshade", false);
+addBookToLibrary("Code & Chaos", "Ada Sterling", false);
+addBookToLibrary("Echoes of Tomorrow", "J.D. Veritas", true);
 
 const list = document.querySelector(".book-list");
 
 function renderBook(book) {
   const item = document.createElement("li");
-  item.textContent = `${book.title} by ${book.author}`;
+  item.textContent = `${book.title} by ${book.author}, ${book.read ? "read" : "not read"}`;
   item.dataset.id = book.id;
 
   const deleteButton = document.createElement("button");
@@ -36,6 +36,9 @@ function renderBook(book) {
     const element = document.querySelector(`[data-id="${item.dataset.id}"]`);
     element.remove();
   });
+
+  const readButton = document.createElement("button");
+  readButton.textContent = "read"
 
   item.appendChild(deleteButton);
   list.appendChild(item);
