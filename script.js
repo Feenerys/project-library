@@ -31,6 +31,13 @@ function showBooks() {
   }
 }
 
+function showNewBook() {
+  const item = document.createElement("li");
+  console.log(myLibrary[myLibrary.length - 1]);
+  item.textContent = `${myLibrary[myLibrary.length - 1].title} by ${myLibrary[myLibrary.length - 1].author}`;
+  list.appendChild(item)
+}
+
 showBooks();
 
 const dialog = document.querySelector("dialog");
@@ -52,6 +59,7 @@ const authorInput = document.querySelector("#author");
 addButton.addEventListener("click", (event) => {
   console.log(titleInput.value);
   addBookToLibrary(titleInput.value, authorInput.value);
-  showBooks()
+  showNewBook()
   event.preventDefault();
+  dialog.close();
 });
