@@ -15,6 +15,11 @@ function addBookToLibrary(title, author, status) {
   myLibrary.push(book);
 }
 
+function removeFromLibrary(id) {
+  const index = myLibrary.findIndex(book => book.id == id);
+  myLibrary.splice(index, 1);
+}
+
 addBookToLibrary("The Silent Forest", "Elena Woods", true);
 addBookToLibrary("Quantum Dreams", "Max Planckman", true);
 addBookToLibrary("Midnight Skies", "Luna Nightshade", false);
@@ -35,6 +40,8 @@ function renderBook(book) {
   deleteButton.addEventListener("click", () => {
     const element = document.querySelector(`[data-id="${item.dataset.id}"]`);
     element.remove();
+    removeFromLibrary(book.id);
+    console.log(myLibrary)
   });
 
   const readButton = document.createElement("button");
