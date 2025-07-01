@@ -23,19 +23,32 @@ addBookToLibrary("Echoes of Tomorrow", "J.D. Veritas");
 
 const list = document.querySelector(".book-list");
 
+function renderBook(book) {
+  const item = document.createElement("li");
+  item.textContent = `${book.title} by ${book.author}`;
+  item.dataset.id = book.id;
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "x";
+  deleteButton.className = "delete";
+
+  deleteButton.addEventListener("click", () => {
+    const element = document.querySelector(`[data-id="${item.dataset.id}"]`);
+    element.remove();
+  });
+
+  item.appendChild(deleteButton);
+  list.appendChild(item);
+}
+
 function showBooks() {
   for (let book of myLibrary) {
-    const item = document.createElement("li");
-    item.textContent = `${book.title} by ${book.author}`;
-    list.appendChild(item);
+    renderBook(book);
   }
 }
 
 function showNewBook() {
-  const item = document.createElement("li");
-  console.log(myLibrary[myLibrary.length - 1]);
-  item.textContent = `${myLibrary[myLibrary.length - 1].title} by ${myLibrary[myLibrary.length - 1].author}`;
-  list.appendChild(item)
+  renderBook(myLibrary[myLibrary.length - 1]);
 }
 
 showBooks();
@@ -59,7 +72,7 @@ const authorInput = document.querySelector("#author");
 addButton.addEventListener("click", (event) => {
   console.log(titleInput.value);
   addBookToLibrary(titleInput.value, authorInput.value);
-  showNewBook()
-  event.preventDefault();
+  showNewBook();
   dialog.close();
+  event.preventDefault();
 });
